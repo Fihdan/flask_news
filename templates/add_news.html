@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="vieport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <title>Форма</title>
+</head>
+<body>
+    <div id="wrapper">
+        <div class="container my-3">
+            <form action="" method="POST" novalidate>
+                {{ form.csrf_token }}
+                <form action="" method="POST" novalidate>
+                    {{ form.csrf_token }}
+                    <div class="form-group">
+                        <h1>Форма обратной связи</h1>
+                        <label>{{ form.name.label }}</label>
+                        {{ form.name(class="from-control") }}
+                    </div>
+                    <div class="form_group">
+                        <label>{{ form.text.label }}</label>
+                        {{ form.text(class="from-control") }}
+                    </div>
+                    <div class="form_group">
+                        <label>{{ form.email.label }}</label>
+                        {{ form.email(class="from-control") }}
+                    </div>
+                    <div class="form_group">
+                        <label>{{ form.rating.label }}</label>
+                        {{ form.rating(class="from-control") }}
+                    </div>
+                    {{ form.submit(class="btn btn-primary btn-lg") }}
+                </form>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

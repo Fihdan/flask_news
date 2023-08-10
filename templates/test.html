@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}
+  Добавить новость
+{% endblock title %}
+{% block content %}
+  <h1>Добавить новость</h1>
+  <hr>
+  <div class="card mb-3">
+    <div class="card-body">
+      <form action="" method="post" novalidate>
+        {{ form.csrf_token }}
+        <div class="form-group">
+            <label>{{ form.title.label }}</label>
+            {{ form.title(class="form-control") }}
+        </div>
+        <div class="form-group">
+            <label>{{ form.text.label }}</label>
+            {{ form.text(class="form-control") }}
+        </div>
+        <div class="form_group">
+            <label>{{ form.name.label }}</label>
+            {{ form.email(class="from-control") }}
+        </div>
+        <div class="form_group">
+            <label>{{ form.name.label }}</label>
+            {{ form.rating(class="from-control") }}
+        </div>
+        {{ form.submit(class="btn btn-primary btn-lg") }}
+      </form>
+    </div>
+  </div>
+{% endblock content %}
