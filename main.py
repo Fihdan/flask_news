@@ -3,7 +3,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, TextAreaField, EmailField, SelectField
 from wtforms.validators import DataRequired, Optional, Length
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import select
+from sqlalchemy import select, create_engine
 from datetime import datetime
 
 app = Flask(__name__)
@@ -17,6 +17,11 @@ class News(db.Model):
     title = db.Column(db.String(255), unique=True, nullable=False)
     text = db.Column(db.Text, nullable=False)
     created_date = db.Column(db.DateTime, default=datetime.utcnow)
+
+engine = create_engine('sqlite:///db.sqlite3')
+
+with engine.connect() as conn:
+    pass
 
 with app.app_context():
     db.create_all()
