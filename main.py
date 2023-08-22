@@ -61,8 +61,9 @@ with app.app_context():
 @app.route('/')
 def index():
     news_list = db.session.scalars(select(News).order_by(News.created_date)).all()
+    categories = Category.query.all()
     return render_template(
-        'index.html', news=news_list
+        'index.html', news=news_list, categories=categories
     )
 
 
