@@ -63,16 +63,15 @@ def index():
     news_list = db.session.scalars(select(News).order_by(News.created_date)).all()
     categories = Category.query.all()
     return render_template(
-        'index.html', news=news_list, categories=categories
+        'index.html', news=news_list[::-1], categories=categories
     )
 
 
 @app.route('/news_detail/<int:id>')
 def news_detail(id):
-    # title = news[id]['title']
-    # text = news[id]['text']
     news = db.session.scalars(select(News).where(News.id == id)).one()
-    return render_template('news_detail.html', news = news)
+    categories = Category.query.all()
+    return render_template('news_detail.html', news = news, categories=categories)
 
 class FeedbackForm(FlaskForm):
     name = StringField('Имя',
